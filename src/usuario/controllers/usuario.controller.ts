@@ -5,6 +5,7 @@ import { JwtAuthGuard } from "src/auth/guard/jwt-auth.guard";
 
 
 
+
 @Controller("/usuarios")
 export class UsuarioController{
 
