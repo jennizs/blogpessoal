@@ -1,5 +1,6 @@
 import { IsNotEmpty } from "class-validator";
 import { Tema } from "src/tema/entities/Tema.entidade";
+import { Usuario } from "src/usuario/entities/usuario.entity";
 import { Column, Entity, ManyToOne, PrimaryGeneratedColumn, UpdateDateColumn } from "typeorm";
 
 
@@ -25,6 +26,12 @@ export class Postagem{
         onDelete: "CASCADE"
     })
     tema: Tema // chave estrangeira
+
+    @ManyToOne(() => Usuario, (Usuario) => Usuario.postagem, { 
+        onDelete: "CASCADE"
+    })
+    usuario: Usuario; // chave estrangeira
+
 
 
 }

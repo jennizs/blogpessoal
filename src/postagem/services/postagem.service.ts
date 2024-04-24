@@ -21,7 +21,8 @@ export class PostagemService {
                 id
             }, 
             relations: {
-                tema: true
+                tema: true,
+                usuario: true,
             }
         });
         // checar se a postagem não foi encontrada
@@ -39,7 +40,8 @@ export class PostagemService {
     
             },
             relations: {
-                tema: true
+                tema: true,
+                usuario: true,
             }
     
     
