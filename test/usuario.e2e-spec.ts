@@ -84,31 +84,40 @@ describe('Testes dos Modulos usuario e Auth (e2e)', () => {
 
 
 
-   it("04 - Deve listar todos os usuarios", async () => {
-       return request(app.getHttpServer())
-         .get('/usuarios/all')
-         .set('Authorization', `${token}`)
-         .send({})
-         .expect(200);
+  it("04 - Deve listar todos os usuarios", async () => {
+    return request(app.getHttpServer())
+      .get('/usuarios/all')
+      .set('Authorization', `${token}`)
+      .send({})
+      .expect(200);
 
-    });
+  });
 
-    it("05 - Deve atualizar um usuario", async () => {
-       return request(app.getHttpServer())
-        .put('/usuarios/atualizar')
-         .set('Authorization', `${token}`)
-         .send({
-           id: usuarioId,
-           nome: 'geandro',
-           usuario: 'root@root.com',
-           senha: 'geandro123',
-           foto: ' '
-         })
-         .expect(200)
-         .then(resposta => {
-           expect("geandro").toEqual(resposta.body.nome);
-         })
+  it("05 - Deve atualizar um usuario", async () => {
+    return request(app.getHttpServer())
+      .put('/usuarios/atualizar')
+      .set('Authorization', `${token}`)
+      .send({
+        id: usuarioId,
+        nome: 'geandro',
+        usuario: 'root@root.com',
+        senha: 'geandro123',
+        foto: ' '
+      })
+      .expect(200)
+      .then(resposta => {
+        expect("geandro").toEqual(resposta.body.nome);
+      })
 
-});
+  });
+
+  it("06 - Deve listar o usuario por ID", async () => {
+    return request(app.getHttpServer())
+      .get(`/usuarios/${usuarioId}`)
+      .set('Authorization', `${token}`)
+      .send({})
+      .expect(200);
+
+  });
 
 });
